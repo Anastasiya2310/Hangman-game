@@ -1,0 +1,45 @@
+
+@mixin responsive( $breakpoint, $orientation: "landscape" ) {
+  @if $breakpoint == smartphone-portrait {
+      @media only screen and ( max-width: 575.98px ) {
+          @content;
+      }
+  }
+  @if $breakpoint == smartphone-landscape {
+      @media only screen and ( min-width: 575.99px ) {
+          @content;
+      }
+  }
+  @if $breakpoint == tablet {
+      @media only screen and ( min-width: 767.99px ) {
+          @content;
+      }
+  }
+  @if $breakpoint == laptop {
+      @media only screen and ( min-width: 1199.98px  ) {
+          @content;
+      }
+  }
+  @if $breakpoint == desktop {
+      @media only screen and ( min-width: 1399.99px ) {
+          @content;
+      }
+  }
+  @if $breakpoint == desktop-large {
+    @media only screen and ( min-width: 1919.99px ) {
+        @content;
+    }
+  }
+  @if $orientation == portrait {
+    @media only screen and ( orientation: "portrait" ) {
+        @content;
+    }
+  }
+}
+
+@mixin hangman($width, $height, $top, $right) {
+  width: $width;
+  height: $height;
+  top: $top;
+  right: $right;
+}

@@ -1,0 +1,260 @@
+@import './../mixins.scss';
+
+.gallows-img {
+  position: relative;
+  
+  img {
+    transform: scale(-1, 1);
+    position: relative;
+    height: 100%;
+    z-index: 30;
+
+    @include responsive('smartphone-portrait') {
+      max-height: 400px;
+    }
+
+    @include responsive('smartphone-landscape') {
+      max-height: 500px;
+    }
+    
+    @include responsive('laptop') {
+      max-height: 700px;
+    }
+
+    @include responsive('desktop') {
+      max-height: 750px;
+    }
+
+    @include responsive('desktop-large') {
+      max-height: 1000px;
+    }
+  }
+
+  .man {
+    background-color: white;
+    position: absolute;
+  }
+
+  .man-head {
+    border-radius: 50%;
+    z-index: 40;
+
+    @include responsive('smartphone-portrait') {
+      @include hangman(50px, 50px, 150px, 215px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(60px, 60px, 190px, 270px);
+    }
+
+    @include responsive('tablet') {
+      @include hangman(60px, 60px, 190px, 270px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(100px, 100px, 490px, 432px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(90px, 90px, 290px, 405px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(110px, 110px, 400px, 546px);
+    }
+
+    .eye {
+      color: black;
+      font-weight: bold;
+      position: absolute;
+
+      @include responsive('smartphone-portrait') {
+        font-size: 14px;
+        top: 15px;
+      }
+      
+      @include responsive('smartphone-landscape') {
+        font-size: 14px;
+        top: 20px;
+      }
+
+      @include responsive('laptop') {
+        font-size: 23px;
+        top: 30px;
+      }
+
+      &.left-eye {
+        @include responsive('smartphone-portrait') {
+          left: 10px; 
+        }
+
+        @include responsive('smartphone-landscape') {
+          left: 15px; 
+        }
+
+        @include responsive('laptop') {
+          left: 25px; 
+        }
+
+      }
+
+      &.right-eye {
+        @include responsive('smartphone-portrait') {
+          right: 10px; 
+        }
+
+        @include responsive('smartphone-landscape') {
+          right: 15px; 
+        }
+        @include responsive('laptop') {
+          right: 25px; 
+        }
+      }
+    }
+  }
+
+  .man-left-arm {
+    @include responsive('smartphone-portrait') {
+      @include hangman(13px, 70px, 195px, 265px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(20px, 80px, 240px, 330px);
+    }
+
+    @include responsive('tablet') {
+      @include hangman(20px, 80px, 240px, 330px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(30px, 130px, 570px, 530px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(30px, 130px, 370px, 490px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(30px, 130px, 490px, 650px);
+    }
+
+    border-radius: 15px;
+    transform: rotate(30deg);
+  }
+
+  .man-right-arm {
+    @include responsive('smartphone-portrait') {
+      @include hangman(13px, 70px, 195px, 200px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(20px, 80px, 240px, 250px);
+    }
+
+    @include responsive('tablet') {
+      @include hangman(20px, 80px, 240px, 250px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(30px, 130px, 570px, 400px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(30px, 130px, 370px, 380px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(30px, 130px, 490px, 520px);
+    }
+
+    border-radius: 15px;
+    transform: rotate(-30deg);
+  }
+
+  .man-body {
+    border-radius: 50%;
+
+    @include responsive('smartphone-portrait') {
+      @include hangman(50px, 90px, 190px, 215px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(60px, 100px, 240px, 270px);
+    }
+
+    @include responsive('tablet') {
+      @include hangman(60px, 100px, 240px, 270px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(100px, 170px, 560px, 430px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(100px, 170px, 370px, 400px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(100px, 170px, 490px, 550px);
+    }
+
+  }
+
+  .man-left-leg {
+    @include responsive('smartphone-portrait') {
+      @include hangman(13px, 70px, 260px, 245px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(20px, 100px, 310px, 310px);
+    }
+
+    @include responsive('tablet') {
+      @include hangman(20px, 100px, 310px, 310px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(30px, 150px, 700px, 490px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(30px, 150px, 500px, 460px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(30px, 150px, 630px, 610px);
+    }
+
+    border-radius: 15px;
+    transform: rotate(10deg);
+  }
+
+  .man-right-leg {
+    @include responsive('smartphone-portrait') {
+      @include hangman(13px, 70px, 260px, 220px);
+    }
+
+    @include responsive('smartphone-landscape') {
+      @include hangman(20px, 100px, 310px, 270px);
+    }
+    
+    @include responsive('tablet') {
+      @include hangman(20px, 100px, 310px, 270px);
+    }
+
+    @include responsive('laptop') {
+      @include hangman(30px, 150px, 700px, 440px);
+    }
+
+    @include responsive('desktop') {
+      @include hangman(30px, 150px, 500px, 410px);
+    }
+
+    @include responsive('desktop-large') {
+      @include hangman(30px, 150px, 630px, 560px);
+    }
+
+    border-radius: 15px;
+    transform: rotate(-10deg);
+  }
+}
