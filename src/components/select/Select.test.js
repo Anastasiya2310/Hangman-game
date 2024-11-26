@@ -1,6 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react';
-const Select = require('./Select');
+import { render, screen, fireEvent } from '@testing-library/react'
+import Select from './Select'
 
 describe('Select component', () => {
   const mockData = [
@@ -26,13 +26,11 @@ describe('Select component', () => {
       <Select 
         data={mockData}
         onQuestionChange={mockOnQuestionChange}
-        selectedCategory=''
+        selectedCategory='Animal'
         setSelectedCategory={mockSetSelectedCategory}
       />
     )
-
-    const selectElement = screen.getByRole('combobox');
-    expect(selectElement).toBeInTheDocument();
+    expect(screen.getByRole('option', {name: 'Animal'}).selected).toBe(true);
   });
 
   it('Should have a truthy value', () => {
