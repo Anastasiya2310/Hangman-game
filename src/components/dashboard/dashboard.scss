@@ -1,0 +1,70 @@
+@import './../mixins.scss';
+
+.dashboard-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2rem;
+
+  @include responsive('smartphone-portrait') {
+    flex-direction: column;
+  }
+
+  @include responsive('smartphone-landscape') {
+    flex-direction: column;
+  }
+
+  @include responsive('laptop') {
+    flex-direction: row;
+    height: 100%;
+  }
+
+  @include responsive('desktop') {
+    min-height: 100vh;
+  }
+
+  .quiz-block {
+    width: 100%;
+    max-width: 550px;
+    background-color: white;
+    padding: 1.5rem;
+    margin: 20px;
+
+    @include responsive('smartphone-portrait') {
+      font-size: 12px;
+    }
+  
+    @include responsive('tablet') {
+      font-size: 14px;
+    }
+  
+    @include responsive('laptop') {
+      font-size: 16px;
+    }
+
+    h1 {
+      p {
+        @include responsive('smartphone-portrait') {
+          font-size: 1.2rem;
+        }
+
+        @include responsive('laptop') {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+.question-category-name {
+  color: #946b2d;
+}
+
+.answer-container {
+  p {
+    display: inline-block;
+    text-align: center;
+    width: 10px;
+    margin: 5px 3px;
+  }
+}

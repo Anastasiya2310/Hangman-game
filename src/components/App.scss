@@ -1,0 +1,33 @@
+@import './mixins.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  @include responsive('smartphone-portrait', 'portrait') {
+    background: url('./../img/background-portrait.jpg')center center no-repeat;
+    background-size: cover;
+  }
+
+  @include responsive('smartphone-landscape') {
+    background: url('./../img/background.jpg')center center no-repeat;
+    background-size: cover;
+  }
+}
+
