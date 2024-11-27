@@ -3,9 +3,6 @@ import { neon } from '@neondatabase/serverless';
 import './App.scss';
 import Dashboard from './dashboard/Dashboard';
 import Modal from './modal/Modal';
-import Select from './select/Select';
-import Lottie from 'lottie-react';
-import animationData from '../img/confetti.json';
 
 /*
   api.json data structure
@@ -69,12 +66,16 @@ const App = () => {
 
   return (
     <>
-      <Modal hideModal={hideModal} show={show}>
-        {gameOver ? (<h1 className="title title-fail">Game Over</h1>) : null}
-        {winner ? (<><h1 className="title title-success">You win! Congratulations!</h1><Lottie className="win-animation" animationData={animationData} style={{ width: 200, height: 200 }}></Lottie></>) : null}
-        <h2>Choose the category of questions</h2>
-        <Select data={data} onQuestionChange={handleQuestionChange} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}></Select>
-      </Modal>
+      <Modal 
+        data={data} 
+        handleQuestionChange={handleQuestionChange} 
+        selectedCategory={selectedCategory} 
+        setSelectedCategory={setSelectedCategory} 
+        hideModal={hideModal} 
+        show={show} 
+        gameOver={gameOver} 
+        winner={winner}
+      />
       <Dashboard 
         data={currentQuestion} 
         gameOver={gameOver} 
