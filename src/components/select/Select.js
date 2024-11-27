@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import './select.scss';
 
 const Select = ({ data, onQuestionChange, selectedCategory, setSelectedCategory }) => {
@@ -12,13 +12,13 @@ const Select = ({ data, onQuestionChange, selectedCategory, setSelectedCategory 
     return filteredQuestions[randomIndex];
   }, [data]);
 
-  // useEffect(() => {
-  //   if(data.length > 0 && !selectedCategory) {
-  //     setSelectedCategory(data[0].category);
-  //     const randomQuestion = getRandomQuestion(data[0].category);
-  //     onQuestionChange(randomQuestion);
-  //   }
-  // },[data, onQuestionChange, getRandomQuestion, selectedCategory, setSelectedCategory]);
+  useEffect(() => {
+    if(data.length > 0 && !selectedCategory) {
+      setSelectedCategory(data[0].category);
+      const randomQuestion = getRandomQuestion(data[0].category);
+      onQuestionChange(randomQuestion);
+    }
+  },[data, onQuestionChange, getRandomQuestion, selectedCategory, setSelectedCategory]);
 
   const renderSelect = () => {
     let options = [];

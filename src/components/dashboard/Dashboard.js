@@ -67,7 +67,7 @@ const Dashboard = ({
           setAnswerLetters([]);
           setShow(true);
           return;
-        }, 1000)
+        }, 300)
       }
     }
 
@@ -94,7 +94,7 @@ const Dashboard = ({
         <p>Failed attempts: {failedAttempts} / 6</p>
       </div>
       <div className='gallow-block'>
-        <Gallows failed={failedAttempts} />
+        <Gallows failedAttempts={failedAttempts} />
       </div>
     </div>
     </>

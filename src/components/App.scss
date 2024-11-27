@@ -1,5 +1,14 @@
 @import './mixins.scss';
 
+@keyframes shadowWindow {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: #000000;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,6 +26,11 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.shadow-dashboard {
+  animation-name: shadowWindow;
+  animation-duration: 3s;
 }
 
 #root {
