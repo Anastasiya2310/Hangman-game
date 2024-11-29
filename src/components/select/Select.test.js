@@ -1,12 +1,13 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Select from './Select'
 
 describe('Select component', () => {
   const mockData = [
     {
       id: 1,
-      category: 'Animal',
+      category: 'Animals',
       question: 'What is the fastest animal?',
       answer: 'Cheetach',
     },
@@ -21,16 +22,16 @@ describe('Select component', () => {
   const mockOnQuestionChange = jest.fn();
   const mockSetSelectedCategory = jest.fn();
 
-  it('Should render Select component', () => {
+  it('Should render', () => {
     render(
       <Select 
         data={mockData}
         onQuestionChange={mockOnQuestionChange}
-        selectedCategory='Animal'
+        selectedCategory='Animals'
         setSelectedCategory={mockSetSelectedCategory}
       />
     )
-    expect(screen.getByRole('option', {name: 'Animal'}).selected).toBe(true);
+    expect(screen.getByRole('option', {name: 'Animals'}).selected).toBe(true);
   });
 
   it('Should have a truthy value', () => {
@@ -46,7 +47,7 @@ describe('Select component', () => {
     expect(container.firstChild).toBeTruthy();
   });
 
-  it('Select length should match the number of unuique catrgories', () => {
+  it('Length should match the number of unuique catrgories', () => {
     render(
       <Select 
         data={mockData}
@@ -67,7 +68,7 @@ describe('Select component', () => {
       <Select 
         data={mockData}
         onQuestionChange={mockOnQuestionChange}
-        selectedCategory='Animal'
+        selectedCategory='Animals'
         setSelectedCategory={mockSetSelectedCategory}
       />
     )
@@ -77,5 +78,17 @@ describe('Select component', () => {
 
     expect(mockSetSelectedCategory).toHaveBeenCalledWith('Medicine');
     expect(mockOnQuestionChange).toHaveBeenCalled();
+  });
+
+  it('Should render first category on initial render', () => {
+    render(
+      <Select 
+        data={mockData}
+        onQuestionChange={mockOnQuestionChange}
+        selectedCategory=''
+        setSelectedCategory={mockSetSelectedCategory}
+      />
+    )
+    expect(mockSetSelectedCategory).toHaveBeenCalledWith('Animals');
   })
 })

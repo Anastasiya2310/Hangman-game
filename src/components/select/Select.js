@@ -2,9 +2,9 @@ import React, {useEffect, useCallback} from 'react';
 import './select.scss';
 
 const Select = ({ data, onQuestionChange, selectedCategory, setSelectedCategory }) => {
-
   let getRandomQuestion = useCallback((selectedCategory) => {
-    if(!data || data.length === 0) return null;
+    if(!data || data.length === 0) return null
+
     const filteredQuestions = data.filter(
       (item) => item.category === selectedCategory
     );
