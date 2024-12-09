@@ -21,6 +21,14 @@
   }
 }
 
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .modal-wraper {
   &.visible {
     position: fixed;
@@ -50,7 +58,6 @@
     }
 
     &.darkenBg {
-
       &:after {
         content: '';
         display: block;
@@ -74,7 +81,6 @@
 }
 
 .modal {
-  display: block;
   position: fixed;
   z-index: 100;
   left: 50%;
@@ -91,14 +97,6 @@
   @include responsive('tablet') {
     top: 35vh;
     width: 500px;
-  }
-
-  &.visible-modal {
-    display: block;
-  }
-
-  &.hidden-modal {
-    display: none;
   }
 
   h2 {
