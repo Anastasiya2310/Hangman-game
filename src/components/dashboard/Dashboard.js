@@ -26,17 +26,20 @@ const Dashboard = ({
   }, [data, gameOver, winner]);
 
   useEffect(() => {
-    if (revealedLetters.length > 0 && !revealedLetters.includes(false)) {
+    if (revealedLetters.length > 0 && revealedLetters.every(letter => letter)) {
       setKeyboardEnabled(true);
       setWinner(true);
       setGameOver(false);
-      setRevealedLetters([]);
-      setFailedAttempts(0);
-      setAnswerLetters([]);
-      setShow(true);
-      return;
+
+      const resetState = () => {
+        setRevealedLetters([]);
+        setFailedAttempts(0);
+        setAnswerLetters([]);
+        setShow(true);
+      };
+      resetState();
     }
-  }, [data, revealedLetters, setWinner, setShow, answerLetters, setGameOver, setFailedAttempts]);
+  }, [revealedLetters, setWinner, setShow, setGameOver, setFailedAttempts]);
   
   const answerString = () => {
     return answerLetters.map((element, index) => {
