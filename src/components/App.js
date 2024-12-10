@@ -42,11 +42,15 @@ const App = () => {
     setWinner(false);
     setFailedAttempts(0);
 
-    if(data.length > 0 && !selectedCategory) {
+    console.log(2 && undefined);
+
+    if(data.length > 0 && selectedCategory) {
       const filteredQuestion = data.filter(item => item.category === selectedCategory);
-      const randomIndex = Math.floor(Math.random() * filteredQuestion.length);
-      const randomQuestion = filteredQuestion[randomIndex];
-      setCurrentQuestion(randomQuestion);
+      if(filteredQuestion.length > 0){
+        const randomIndex = Math.floor(Math.random() * filteredQuestion.length);
+        const randomQuestion = filteredQuestion[randomIndex];
+        setCurrentQuestion(randomQuestion);
+      }
     }
   }
 
