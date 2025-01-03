@@ -42,7 +42,7 @@ describe('Modal component', () => {
   }
 
   it('apply correct CSS class, when "show" is true', () => {
-    render (
+    render(
       <Modal {...defaultProps} />
     )
     const divModal = screen.getByRole('dialog');
@@ -51,7 +51,7 @@ describe('Modal component', () => {
   });
 
   it('apply correct CSS class, when "show" is false', () => {
-    render (
+    render(
       <Modal {...defaultProps} show={false} />
     )
     const divModal = screen.getByRole('dialog');
@@ -59,7 +59,7 @@ describe('Modal component', () => {
   });
 
   it('apply correct CSS class and title, when "gameOver" is true', () => {
-    render (
+    render(
       <Modal {...defaultProps} show={true} gameOver={true} />
     )
     const divModal = screen.getByRole('dialog');
@@ -70,7 +70,7 @@ describe('Modal component', () => {
   });
 
   it('apply correct CSS class and title, when "winner" is true', () => {
-    render (
+    render(
       <Modal {...defaultProps} show={true} gameOver={false} winner={true} />
     )
     const divModal = screen.getByRole('dialog');

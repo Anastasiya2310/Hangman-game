@@ -1,3 +1,4 @@
+import React from 'react';
 import './modal.scss';
 import Select from '../select/Select';
 import Lottie from 'lottie-react';

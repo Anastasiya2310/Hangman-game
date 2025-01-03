@@ -38,20 +38,24 @@ const Keyboard = ({ onKeyboardClick, gameOver, winner }) => {
     setDisabledKeys([...disabledKeys, letter]);
   }
 
+  const resetKeyboard = () => {
+    setDisabledKeys([]);
+  }
+
   useEffect(() => {
     if(gameOver || winner) {
-      setDisabledKeys([]);
+      resetKeyboard();
     }
   }, [gameOver, winner]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const letter = Object.keys(charCodes).find((key) => charCodes[key] === event.code)?.toLowerCase();
+      const letter = Object.keys(charCodes).find((key) => charCodes[key] === event.code);
       if(letter && !disabledKeys.includes(letter) && !winner && !gameOver) {
         onKeyboardClick(letter);
         setDisabledKeys([...disabledKeys, letter]);
       } else if(winner || gameOver) {
-        setDisabledKeys([]);
+        resetKeyboard();
       }
     }
 
