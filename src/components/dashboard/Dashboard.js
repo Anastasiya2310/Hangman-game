@@ -12,9 +12,10 @@ const Dashboard = ({
   setWinner, 
   failedAttempts, 
   setFailedAttempts,
+  keyboardEnabled,
+  setKeyboardEnabled,
 }) => {
   const [revealedLetters, setRevealedLetters] = useState([]);
-  const [keyboardEnabled, setKeyboardEnabled] = useState(true);
   const [answerLetters, setAnswerLetters] = useState([]);
 
   useEffect(() => {
@@ -27,11 +28,12 @@ const Dashboard = ({
 
   useEffect(() => {
     if (revealedLetters.length > 0 && revealedLetters.every(letter => letter)) {
-      setKeyboardEnabled(true);
+      setKeyboardEnabled(false);
       setWinner(true);
       setGameOver(false);
 
       const resetState = () => {
+        setKeyboardEnabled(false);
         setRevealedLetters([]);
         setFailedAttempts(0);
         setAnswerLetters([]);
@@ -63,14 +65,14 @@ const Dashboard = ({
       if(failedAttempts === 5) {
         setTimeout(() => {
           setWinner(false);
-          setKeyboardEnabled(true);
+          setKeyboardEnabled(false);
           setGameOver(true);
           setRevealedLetters([]);
           setFailedAttempts(0);
           setAnswerLetters([]);
           setShow(true);
           return;
-        }, 300)
+        }, 700)
       }
     }
 
@@ -85,23 +87,22 @@ const Dashboard = ({
     <div className='dashboard-wrapper'>
       <div className='quiz-block'>
         {<h1>
-          Question from category: <span className='question-category-name'>{data?.category || 'Animal'}</span>
-          <p>{data?.question || 'Loading...'}</p>
+          Question from category: <span data-testid='Animals' className='question-category-name'>{data?.category || 'Animals'}</span>
+          <p data-testid='question'>{data?.question || 'Loading...'}</p>
         </h1>}
-        <div className='answer-container'>
+        <div data-testid='answer' className='answer-container'>
           {data && (answerString(data.answer))}
         </div>
         {keyboardEnabled && data && (
-          <Keyboard onKeyboardClick={handleLetterClick} gameOver={gameOver} winner={winner} />
+          <Keyboard data-testid='keyboard' onKeyboardClick={handleLetterClick} gameOver={gameOver} winner={winner} />
         )}
-        <p>Failed attempts: {failedAttempts} / 6</p>
+        <p data-testid='failed-attempts'>Failed attempts: {failedAttempts} / 6</p>
       </div>
       <div className='gallow-block'>
         <Gallows failedAttempts={failedAttempts} />
       </div>
     </div>
     </>
-    
   )
 }
 
