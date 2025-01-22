@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@neondatabase/serverless": "^0.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -21,11 +22,11 @@
     "webpack": "^5.96.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:debug": "jest --detectOpenHandles",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "test:watch": "craco test --watch",
+    "test:debug": "craco test --detectOpenHandles",
     "lint": "eslint .",
     "format": "prettier --write .",
     "clean": "rimraf build && rimraf node_modules && npm install"
