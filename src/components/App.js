@@ -31,6 +31,7 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [keyboardEnabled, setKeyboardEnabled] = useState(false);
 
   const handleQuestionChange = (newQuestion) => {
     setCurrentQuestion(newQuestion);
@@ -41,8 +42,7 @@ const App = () => {
     setGameOver(false);
     setWinner(false);
     setFailedAttempts(0);
-
-    console.log(2 && undefined);
+    setKeyboardEnabled(true);
 
     if(data.length > 0 && selectedCategory) {
       const filteredQuestion = data.filter(item => item.category === selectedCategory);
@@ -89,6 +89,8 @@ const App = () => {
         setWinner={setWinner}
         failedAttempts={failedAttempts}
         setFailedAttempts={setFailedAttempts}
+        keyboardEnabled={keyboardEnabled}
+        setKeyboardEnabled={setKeyboardEnabled}
       />
     </>
   )
