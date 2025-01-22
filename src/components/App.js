@@ -57,7 +57,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sql = neon('postgresql://ro_user:hi%26%7CK42%7DG%40A6@ep-lively-violet-a2vco8om-pooler.eu-central-1.aws.neon.tech/random_quotes?sslmode=require');
+        const sql = neon(process.env.REACT_APP_NEON_CONNECTION_STRING);
         const dataDB = await sql('SELECT * FROM questions');
         setData(dataDB);
       } catch(error) {
