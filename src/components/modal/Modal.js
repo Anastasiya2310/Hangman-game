@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './modal.scss';
 import Select from '../select/Select';
 import Lottie from 'lottie-react';
@@ -12,10 +12,17 @@ const Modal = ({
   hideModal, 
   show, 
   gameOver, 
-  winner }) => {
+  winner,
+  setWinner,
+  setGameOver }) => {
   const handleStartGame = () => {
     hideModal();
   };
+
+  const handleGoHome = () => {
+    setWinner(false);
+    setGameOver(false);
+  }
 
   const modalTitle = gameOver ? (
     <h1 className="title title-fail">Game Over</h1>
@@ -26,16 +33,27 @@ const Modal = ({
     </>
   ) : null;
 
+  const modalBody = gameOver || winner ? (
+    <>
+      {modalTitle}
+      <button onClick={handleGoHome} className='button button-start'>Home page</button>
+    </>
+  ) : (
+    <>
+      {modalTitle}
+      <h2>Choose the category of questions</h2>
+      <Select data={data} onQuestionChange={handleQuestionChange} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}></Select>
+      <button onClick={handleStartGame} className='button button-start'>Start game</button>
+    </>
+  )
+
   return (
     <div 
       role="dialog"
       aria-modal="true"
       className={`modal-wraper ${show ? 'visible' : 'hidden'} ${gameOver ? 'darkenBg' : 'transparentBg'}`}>
       <div className='modal'>
-        {modalTitle}
-        <h2>Choose the category of questions</h2>
-        <Select data={data} onQuestionChange={handleQuestionChange} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}></Select>
-        <button onClick={handleStartGame} className='button button-start'>Start game</button>
+        {modalBody}
       </div>
     </div>
   )

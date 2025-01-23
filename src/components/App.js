@@ -79,6 +79,8 @@ const App = () => {
         show={show} 
         gameOver={gameOver} 
         winner={winner}
+        setGameOver={setGameOver}
+        setWinner={setWinner}
       />
       <Dashboard 
         data={currentQuestion} 
