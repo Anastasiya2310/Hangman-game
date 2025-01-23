@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.1.0",
     "@neondatabase/serverless": "^0.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -22,11 +21,11 @@
     "webpack": "^5.96.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "test:watch": "craco test --watch",
-    "test:debug": "craco test --detectOpenHandles",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll",
+    "test:watch": "react-scripts test --watch",
+    "test:debug": "react-scripts test --detectOpenHandles",
     "lint": "eslint .",
     "format": "prettier --write .",
     "clean": "rimraf build && rimraf node_modules && npm install"
@@ -68,7 +67,6 @@
       "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg|png|jpg|jpeg)$": "<rootDir>/__mocks__/fileMock.js",
       "^img/(.*)$": "<rootDir>/src/img/$1"
-    },
-    "testEnvironment": "jsdom"
+    }
   }
 }
