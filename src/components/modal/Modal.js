@@ -36,14 +36,14 @@ const Modal = ({
   const modalBody = gameOver || winner ? (
     <>
       {modalTitle}
-      <button onClick={handleGoHome} className='button button-start'>Home page</button>
+      <button data-testid='home-button' onClick={handleGoHome} className='button button-start'>Home page</button>
     </>
   ) : (
     <>
       {modalTitle}
       <h2>Choose the category of questions</h2>
       <Select data={data} onQuestionChange={handleQuestionChange} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}></Select>
-      <button onClick={handleStartGame} className='button button-start'>Start game</button>
+      <button data-testid='start-button' onClick={handleStartGame} className='button button-start'>Start game</button>
     </>
   )
 
