@@ -1,7 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent} from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Lottie from 'lottie-react';
 import Modal from './Modal'
 
 jest.mock('lottie-react', () => {
@@ -29,6 +28,8 @@ describe('Modal component', () => {
   const mockHandleQuestionChange = jest.fn();
   const mockSetSelectedCategory = jest.fn();
   const mockHideModal = jest.fn();
+  const mockSetGameOver = jest.fn();
+  const mockSetWinner = jest.fn();
 
   const defaultProps = {
     data: mockData,
@@ -38,27 +39,29 @@ describe('Modal component', () => {
     hideModal: mockHideModal,
     show: true, 
     gameOver: false, 
-    winner: false
+    winner: false,
+    setGameOver: mockSetGameOver,
+    setWinner: mockSetWinner
   }
 
-  it('apply correct CSS class, when "show" is true', () => {
+  it('should apply correct CSS class, when "show" is true', () => {
     render(
       <Modal {...defaultProps} />
     )
     const divModal = screen.getByRole('dialog');
 
     expect(divModal).toHaveClass('visible');
-  });
+  }),
 
-  it('apply correct CSS class, when "show" is false', () => {
+  it('should apply correct CSS class, when "show" is false', () => {
     render(
       <Modal {...defaultProps} show={false} />
     )
     const divModal = screen.getByRole('dialog');
     expect(divModal).toHaveClass('hidden');
-  });
+  }),
 
-  it('apply correct CSS class and title, when "gameOver" is true', () => {
+  it('should apply correct CSS class and title, when "gameOver" is true', () => {
     render(
       <Modal {...defaultProps} show={true} gameOver={true} />
     )
@@ -67,9 +70,9 @@ describe('Modal component', () => {
 
     expect(divModal).toHaveClass('darkenBg');
     expect(title).toBeInTheDocument();
-  });
+  }),
 
-  it('apply correct CSS class and title, when "winner" is true', () => {
+  it('should apply correct CSS class and title, when "winner" is true', () => {
     render(
       <Modal {...defaultProps} show={true} gameOver={false} winner={true} />
     )
@@ -78,5 +81,45 @@ describe('Modal component', () => {
     
     expect(divModal).not.toHaveClass('darkenBg');
     expect(title).toBeInTheDocument();
-  });
+  }),
+  it('should show correct button when gameOver is true', () => {
+    render(
+      <Modal {...defaultProps} show={true} gameOver={true} winner={false} />
+    );
+    const homeButton = screen.getByTestId('home-button');
+    expect(homeButton).toBeInTheDocument();
+    expect(homeButton).toHaveTextContent('Home page');
+  }),
+  it('should show correct button when winner is true', () => {
+    render(
+      <Modal {...defaultProps} show={true} gameOver={false} winner={true} />
+    );
+    const homeButton = screen.getByTestId('home-button');
+    expect(homeButton).toBeInTheDocument();
+    expect(homeButton).toHaveTextContent('Home page');
+  }),
+  it('should reset gameOver to false when home page button was clicked', () => {
+    render(
+      <Modal {...defaultProps} show={true} gameOver={true} winner={false} />
+    );
+    const homeButton = screen.getByTestId('home-button');
+    fireEvent.click(homeButton);
+    expect(defaultProps.setGameOver).toHaveBeenCalledWith(false);
+  }),
+  it('should reset winner to false when home page button was clicked', () => {
+    render(
+      <Modal {...defaultProps} show={true} gameOver={false} winner={true} />
+    );
+    const homeButton = screen.getByTestId('home-button');
+    fireEvent.click(homeButton);
+    expect(defaultProps.setWinner).toHaveBeenCalledWith(false);
+  }),
+  it('should set Modal to false when button "Start game" was clicked', () => {
+    render(
+      <Modal {...defaultProps} show={true} gameOver={false} winner={false} />
+    );
+    const startButton = screen.getByTestId('start-button');
+    fireEvent.click(startButton);
+    expect(defaultProps.setShow).toHaveBeenCalledWith(false);
+  })
 })
