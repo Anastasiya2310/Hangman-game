@@ -26,6 +26,7 @@
     "test": "react-scripts test --watchAll",
     "test:watch": "react-scripts test --watch",
     "test:debug": "react-scripts test --detectOpenHandles",
+    "test:coverage": "react-scripts test --coverage",
     "lint": "eslint .",
     "format": "prettier --write .",
     "clean": "rimraf build && rimraf node_modules && npm install"
@@ -67,6 +68,25 @@
       "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg|png|jpg|jpeg)$": "<rootDir>/__mocks__/fileMock.js",
       "^img/(.*)$": "<rootDir>/src/img/$1"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.test.{js,jsx,ts}",
+      "!src/index.js",
+      "!src/reportWebVitals.js",
+      "!src/serviceWorker.js" 
+    ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
     }
   }
 }
