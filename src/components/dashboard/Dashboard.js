@@ -61,9 +61,10 @@ const Dashboard = ({
       setFailedAttempts(failedAttempts + 1);
 
       if(failedAttempts === 5) {
+        setKeyboardEnabled(false);
+
         setTimeout(() => {
           setWinner(false);
-          setKeyboardEnabled(false);
           setGameOver(true);
           setRevealedLetters([]);
           setFailedAttempts(0);
