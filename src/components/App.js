@@ -71,7 +71,8 @@ const App = () => {
   return (
     <>
       <Modal 
-        data={data} 
+        data={data}
+        answer={currentQuestion ? currentQuestion.answer : ''}
         handleQuestionChange={handleQuestionChange} 
         selectedCategory={selectedCategory} 
         setSelectedCategory={setSelectedCategory} 

@@ -125,7 +125,6 @@ describe('Dashboard', () => {
     fireEvent.click(keyboardButton);
 
     jest.runAllTimers();
-
     expect(updatedProps.setKeyboardEnabled).toHaveBeenCalledWith(false);
     expect(updatedProps.setWinner).toHaveBeenCalledWith(false);
     expect(updatedProps.setGameOver).toHaveBeenCalledWith(true);
