@@ -5,7 +5,8 @@ import Lottie from 'lottie-react';
 import animationData from '../../img/confetti.json';
 
 const Modal = ({ 
-  data, 
+  data,
+  answer,
   handleQuestionChange, 
   selectedCategory, 
   setSelectedCategory, 
@@ -33,7 +34,13 @@ const Modal = ({
     </>
   ) : null;
 
-  const modalBody = gameOver || winner ? (
+  const modalBody = gameOver ? (
+    <>
+      {modalTitle}
+      <p className="modal-answer">Answer: <strong>{answer}</strong></p>
+      <button data-testid='home-button' onClick={handleGoHome} className='button button-start'>Home page</button>
+    </>
+  ) : winner ? (
     <>
       {modalTitle}
       <button data-testid='home-button' onClick={handleGoHome} className='button button-start'>Home page</button>
