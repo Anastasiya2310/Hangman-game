@@ -56,8 +56,6 @@ const Dashboard = ({
   };
 
   const handleLetterClick = (letter) => {
-    if(!keyboardEnabled) return;
-
     const isLetterInAnswer = answerLetters.includes(letter);
     if(!isLetterInAnswer) {
       setFailedAttempts(failedAttempts + 1);

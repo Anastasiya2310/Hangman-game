@@ -54,8 +54,6 @@ const Keyboard = ({ onKeyboardClick, gameOver, winner }) => {
       if(letter && !disabledKeys.includes(letter) && !winner && !gameOver) {
         onKeyboardClick(letter);
         setDisabledKeys([...disabledKeys, letter]);
-      } else if(winner || gameOver) {
-        resetKeyboard();
       }
     }
 
@@ -69,7 +67,7 @@ const Keyboard = ({ onKeyboardClick, gameOver, winner }) => {
   const createButtons = (alphabet) => {
     let letters = [];
     for(let char in alphabet){
-      letters.push(<button disabled={disabledKeys.includes(char) ? 'disabled' : null} className={disabledKeys.includes(char) ? 'disabled keyboard-letter' : 'keyboard-letter'} key={char} onClick={() => handleLetterClick(char)}>{char.toLocaleUpperCase()}</button>);
+      letters.push(<button disabled={(!gameOver && !winner && disabledKeys.includes(char)) ? 'disabled' : null} className={`keyboard-letter ${disabledKeys.includes(char) && !gameOver && !winner ? 'disabled' : ''}`} key={char} onClick={() => handleLetterClick(char)}>{char.toLocaleUpperCase()}</button>);
     }
     return letters;
   }

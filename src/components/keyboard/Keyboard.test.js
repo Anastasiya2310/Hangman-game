@@ -56,5 +56,13 @@ describe('Keyboard',() => {
       expect(key).not.toHaveClass('correct');
       expect(key).not.toHaveClass('incorrect');
     });
+  }),
+  it('should reset all keys when reset prop is triggered', () => {
+    render(<Keyboard reset={true} />)
+    const keys = screen.getAllByRole('button');
+    keys.forEach((key) => {
+      expect(key).not.toHaveClass('correct');
+      expect(key).not.toHaveClass('incorrect');
+    });
   })
 })
