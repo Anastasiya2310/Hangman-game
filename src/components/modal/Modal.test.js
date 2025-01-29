@@ -120,6 +120,7 @@ describe('Modal component', () => {
     );
     const startButton = screen.getByTestId('start-button');
     fireEvent.click(startButton);
-    expect(defaultProps.setShow).toHaveBeenCalledWith(false);
+
+    expect(defaultProps.hideModal).toHaveBeenCalled();
   })
 })
