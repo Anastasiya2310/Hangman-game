@@ -73,6 +73,7 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.test.{js,jsx,ts}",
       "!src/index.js",
+      "!src/components/App.js",
       "!src/reportWebVitals.js",
       "!src/serviceWorker.js" 
     ],
