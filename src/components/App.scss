@@ -41,7 +41,12 @@ body {
   }
 
   @include responsive('smartphone-landscape') {
-    background: url('./../img/background.jpg')center center no-repeat;
+    background: url('./../img/background-medium.jpg')center center no-repeat;
+    background-size: cover;
+  }
+
+  @include responsive('desktop') {
+    background: url('./../img/background-large.jpg')center center no-repeat;
     background-size: cover;
   }
 }
