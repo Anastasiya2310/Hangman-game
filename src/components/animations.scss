@@ -1,0 +1,40 @@
+@keyframes swinging{
+  0% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg)
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    filter: grayscale(0);
+  }
+  100% {
+    filter: grayscale(1);
+  }
+}
+
+@keyframes fadeOutOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

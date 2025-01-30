@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './modal.scss';
 import Select from '../select/Select';
 import Lottie from 'lottie-react';
@@ -59,7 +59,7 @@ const Modal = ({
       role="dialog"
       aria-modal="true"
       className={`modal-wraper ${show ? 'visible' : 'hidden'} ${gameOver ? 'darkenBg' : 'transparentBg'}`}>
-      <div className='modal'>
+      <div className={`modal ${gameOver ? 'scale-in' : null }`}>
         {modalBody}
       </div>
     </div>
