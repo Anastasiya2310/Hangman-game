@@ -1,5 +1,6 @@
 @import './../mixins.scss';
 @import './../animations.scss';
+@import './../extensions.scss';
 
 .fade-out-dashboard {
   animation: fadeOutOpacity 2.1s ease-out;
@@ -73,5 +74,21 @@
     text-align: center;
     width: 10px;
     margin: 5px 3px;
+  }
+}
+
+.button-dashboard {
+  @extend .button-default;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  font-weight: bold;
+
+  &:before {
+    content: "\279C";
+    font-size: 20px;
+    display: inline-block;
+    transform: scaleX(-1);
+    margin-right: 10px;
   }
 }

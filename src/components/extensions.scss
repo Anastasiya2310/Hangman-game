@@ -1,0 +1,22 @@
+.button-default {
+  padding: 15px 25px;
+  border: none;
+  box-shadow: 0 9px rgba(83,104,120, 0.7);
+  font-size: 1.2rem;
+  border-radius: 15px;
+  color: white;
+  background-color: rgba(34,47,91, 0.7);
+  margin: 15px 0;
+  letter-spacing: 1.5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(34,47,91, 1);
+  }
+
+  &:active {
+    background-color: rgba(34,47,91, 1);
+    box-shadow: 0 5px rgba(83,104,120, 1);
+    transform: translateY(4px);
+  }
+}
