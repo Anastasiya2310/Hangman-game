@@ -70,6 +70,10 @@ const App = () => {
 
   return (
     <>
+      <div className={`app-background 
+        ${(failedAttempts === 6) ? 'fade-out' : ''}
+        ${gameOver ? 'gray-background' : ''}`}
+      ></div>
       <Modal 
         data={data}
         answer={currentQuestion ? currentQuestion.answer : ''}
@@ -87,7 +91,8 @@ const App = () => {
         data={currentQuestion} 
         gameOver={gameOver} 
         setGameOver={setGameOver} 
-        setShow={setShow}  
+        setShow={setShow}
+        show={show}  
         winner={winner}
         setWinner={setWinner}
         failedAttempts={failedAttempts}

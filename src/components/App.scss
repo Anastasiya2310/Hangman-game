@@ -1,13 +1,5 @@
 @import './mixins.scss';
-
-@keyframes shadowWindow {
-  from {
-    background-color: transparent;
-  }
-  to {
-    background-color: #000000;
-  }
-}
+@import './animations.scss';
 
 * {
   box-sizing: border-box;
@@ -28,12 +20,21 @@ body {
   padding: 0;
 }
 
-.shadow-dashboard {
-  animation-name: shadowWindow;
-  animation-duration: 3s;
+.gray-background {
+  filter: grayscale(1);
 }
 
-#root {
+.fade-out {
+  animation: fadeOut 2s ease-out;
+}
+
+.app-background {
+  position: fixed;
+  //z-index: 80;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   @include responsive('smartphone-portrait', 'portrait') {
     background: url('./../img/background-portrait.jpg')center center no-repeat;
     background-size: cover;

@@ -1,25 +1,5 @@
 @import './../mixins.scss';
-
-@keyframes slowBlackout {
-  from {
-    filter: grayscale(0);
-  }
-  to {
-    filter: grayscale(100%);
-  }
-}
-
-@keyframes swinging{
-  0% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(-15deg)
-  }
-  100% {
-    transform: rotate(15deg);
-  }
-}
+@import './../animations.scss';
 
 .visible {
   display: block;
@@ -37,25 +17,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-
-    @include responsive('smartphone-portrait', 'portrait') {
-      background: url('./../../img/background-portrait.jpg')center center no-repeat;
-      background-size: cover;
-    }
-
-    @include responsive('tablet') {
-      background: url('./../../img/background.jpg')center center no-repeat;
-      background-size: cover;
-
-      &::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: url('../../img/gallows-t.svg') left 40px no-repeat;
-        background-size: contain;
-      }
-    }
+    filter: grayscale(0);
 
     &.darkenBg {
       &:after {
@@ -72,9 +34,7 @@
       }
 
       &:before {
-        background: url('./../../img/background.jpg')center center no-repeat;
-        background-size: cover;
-        animation: slowBlackout 1.5s ease forwards;
+        filter: grayscale(100%);
       }
     }
   }
@@ -83,8 +43,6 @@
 .modal {
   position: fixed;
   z-index: 100;
-  left: 50%;
-  transform: translateX(-50%);
   background-color: rgba(255, 255, 255, 0.8);
   padding: 15px 25px;
   text-align: center;
@@ -92,11 +50,19 @@
   @include responsive('smartphone-portrait') {
     width: 90%;
     top: 20vh;
+    margin-left: calc(50vw - 45%);
+  }
+
+  @include responsive('smartphone-landscape') {
+    width: 90%;
+    top: 20vh;
+    margin-left: calc(50vw - 45%);
   }
 
   @include responsive('tablet') {
     top: 35vh;
     width: 500px;
+    margin-left: calc(50vw - 250px);
   }
 
   h2 {
@@ -126,6 +92,10 @@
       transform: translateY(4px);
     }
   }
+}
+
+.scale-in {
+  animation: scaleIn 2s ease-in;
 }
 
 .title-fail {

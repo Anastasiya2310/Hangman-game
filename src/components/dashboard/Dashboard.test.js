@@ -88,7 +88,7 @@ describe('Dashboard', () => {
     setTimeout(() => {
       expect(mockProps.setGameOver).toHaveBeenCalledWith(true);
       expect(mockProps.setWinner).toHaveBeenCalledWith(false);
-    }, 700)
+    }, 2000)
   }),
 
   it('should set "winner" to TRUE if entered letters are equal answer',() => {

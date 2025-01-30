@@ -7,7 +7,8 @@ const Dashboard = ({
   data, 
   gameOver, 
   setGameOver, 
-  setShow, 
+  setShow,
+  show, 
   winner, 
   setWinner, 
   failedAttempts, 
@@ -63,6 +64,7 @@ const Dashboard = ({
       if(failedAttempts === 5) {
         setKeyboardEnabled(false);
 
+
         setTimeout(() => {
           setWinner(false);
           setGameOver(true);
@@ -71,7 +73,7 @@ const Dashboard = ({
           setAnswerLetters([]);
           setShow(true);
           return;
-        }, 700)
+        }, 2000)
       }
     }
 
@@ -83,7 +85,11 @@ const Dashboard = ({
   
   return (
     <>
-    <div className='dashboard-wrapper'>
+    <div 
+      className={`dashboard-wrapper 
+      ${(failedAttempts === 6) ? 'fade-out-dashboard' : ''} 
+      ${show ? 'hidden' : ''} `}
+    >
       <div className='quiz-block'>
         {<h1>
           Question from category: <span data-testid='Animals' className='question-category-name'>{data?.category || 'Animals'}</span>
