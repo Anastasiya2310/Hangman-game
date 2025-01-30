@@ -19,6 +19,14 @@ const Dashboard = ({
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [answerLetters, setAnswerLetters] = useState([]);
 
+  const resetState = () => {
+    setKeyboardEnabled(false);
+    setRevealedLetters([]);
+    setFailedAttempts(0);
+    setAnswerLetters([]);
+    setShow(true);
+  };
+
   useEffect(() => {
     if(data && data.answer) {
       let dataAnswerLower = data.answer.toLowerCase();
@@ -33,13 +41,13 @@ const Dashboard = ({
       setWinner(true);
       setGameOver(false);
 
-      const resetState = () => {
-        setKeyboardEnabled(false);
-        setRevealedLetters([]);
-        setFailedAttempts(0);
-        setAnswerLetters([]);
-        setShow(true);
-      };
+      // const resetState = () => {
+      //   setKeyboardEnabled(false);
+      //   setRevealedLetters([]);
+      //   setFailedAttempts(0);
+      //   setAnswerLetters([]);
+      //   setShow(true);
+      // };
       resetState();
     }
   }, [revealedLetters, setWinner, setShow, setGameOver, setFailedAttempts]);
@@ -64,7 +72,6 @@ const Dashboard = ({
       if(failedAttempts === 5) {
         setKeyboardEnabled(false);
 
-
         setTimeout(() => {
           setWinner(false);
           setGameOver(true);
@@ -85,11 +92,12 @@ const Dashboard = ({
   
   return (
     <>
-    <div 
-      className={`dashboard-wrapper 
-      ${(failedAttempts === 6) ? 'fade-out-dashboard' : ''} 
-      ${show ? 'hidden' : ''} `}
-    >
+      <div 
+        className={`dashboard-wrapper 
+        ${(failedAttempts === 6) ? 'fade-out-dashboard' : ''} 
+        ${show ? 'hidden' : ''} `}
+      >
+      <button onClick={resetState} className='button-dashboard'>Home</button>
       <div className='quiz-block'>
         {<h1>
           Question from category: <span data-testid='Animals' className='question-category-name'>{data?.category || 'Animals'}</span>
