@@ -29,7 +29,7 @@ const Modal = ({
     <h1 className="title title-fail">Game Over</h1>
   ) : winner ? (
     <>
-      <h1 className="title title-success">You win! Congratulations!</h1>
+      <h1 className="title title-success">You won! Congratulations!</h1>
       <Lottie className="win-animation" animationData={animationData} style={{ width: 200, height: 200 }}></Lottie>
     </>
   ) : null;
