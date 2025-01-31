@@ -1,6 +1,6 @@
 # Hangman Game
 
-[Start](https://hangman-game-9xmk04fk0-anastasiya2310s-projects.vercel.app/)
+## [Start](https://hangman-game-9xmk04fk0-anastasiya2310s-projects.vercel.app/)
 
 ![background](https://github.com/user-attachments/assets/aff78e49-d98b-4a49-bf3f-d068dd6b0ef3)
 
